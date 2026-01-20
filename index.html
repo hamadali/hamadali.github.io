@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammad Ali | Shopify Developer & SEO Specialist</title>
+    <!-- Tailwind for fast, modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .shopify-green { color: #95bf47; }
+        .bg-shopify { background-color: #95bf47; }
+        .border-shopify { border-color: #95bf47; }
+        
+        /* Interactive Background Animation */
+        .hero-mesh {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(149, 191, 71, 0.15) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, rgba(149, 191, 71, 0.05) 0, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(15, 23, 42, 0.05) 0, transparent 50%);
+        }
+
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 70px !important;
+        }
+
+        .hover-lift { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .hover-lift:hover { transform: translateY(-5px); }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+        .btn-shine:hover::after {
+            left: 100%;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-anim { animation: float 4s ease-in-out infinite; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #95bf47; border-radius: 10px; }
+
+        .faq-accordion[open] summary i { transform: rotate(180deg); }
+
+        /* Service Card Enhancements */
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .service-card:hover {
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
+            border-color: #95bf47;
+        }
+        .service-card:hover .icon-box {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* NEW CUSTOM STYLES FOR UPDATED SECTIONS */
+        .authority-card {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .authority-card:hover {
+            background: white;
+            transform: translateY(-3px);
+            border-color: #95bf47;
+            box-shadow: 0 10px 25px -5px rgba(149, 191, 71, 0.2);
+        }
+        .filter-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .filter-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* TIMELINE STYLES (NEW) */
+        .process-step-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            perspective: 1000px;
+        }
+        
+        .process-step-card:hover {
+            transform: translateX(10px);
+        }
+        
+        @media (min-width: 1024px) {
+            .process-step-card:hover {
+                transform: translateY(-10px) scale(1.02);
+            }
+        }
+
+        .line-grow {
+            background: linear-gradient(to bottom, transparent, #95bf47, transparent);
+            background-size: 100% 200%;
+            animation: moveGradient 4s linear infinite;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+
+        .number-glow {
+            text-shadow: 0 0 20px rgba(149, 191, 71, 0.4);
+        }
+
+        /* METRICS SECTION STYLES (NEW) */
+        .metric-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .metric-card:hover {
+            background: rgba(30, 41, 59, 1);
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(149, 191, 71, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+        .progress-ring {
+            transition: stroke-dashoffset 2s ease-out;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+        }
+        .metric-card:hover .progress-ring {
+            stroke-dashoffset: var(--final-offset);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Desktop & Mobile Navigation -->
+    <nav id="main-nav" class="fixed w-full z-[60] transition-all duration-300 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="w-10 h-10 bg-shopify rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-200 transition-transform group-hover:rotate-12">
+                        <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight">Hammad<span class="shopify-green">Ali</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-1 items-center bg-white/50 p-1 rounded-full border border-slate-200/50 backdrop-blur-sm">
+                    <a href="#projects" class="text-sm font-semibold px-5 py-2 rounded-full hover:bg-white hover:shadow-sm transition">Projects</a>
+                    <a href="#services" class="text-sm font-semibold px-5 py-2 rounded-full hover:bg-white hover:shadow-sm transition">Expertise</a>
+                    <a href="#process" class="text-sm font-semibold px-5 py-2 rounded-full hover:bg-white hover:shadow-sm transition">Process</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://wa.me/923249506508" target="_blank" class="flex items-center space-x-2 bg-green-500 text-white px-6 py-2.5 rounded-full text-sm font-bold btn-shine shadow-lg shadow-green-100 hover:bg-green-600 transition">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span>WhatsApp Me</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <a href="https://wa.me/923249506508" class="p-2 bg-green-500 text-white rounded-lg shadow-md"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                    <button id="mobile-menu-button" class="p-2 text-slate-900 bg-white rounded-lg shadow-sm">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[90vh] flex items-center pt-24 pb-20 px-4 hero-mesh overflow-hidden">
+        <!-- Floating Abstract Shapes -->
+        <div class="absolute top-40 -left-20 w-64 h-64 bg-green-200/30 blur-[100px] rounded-full"></div>
+        <div class="absolute bottom-20 -right-20 w-96 h-96 bg-blue-200/20 blur-[120px] rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 mb-8 bg-white shadow-sm border border-slate-100 rounded-2xl float-anim">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <span class="text-xs font-bold text-slate-700 uppercase tracking-widest">Available for New Projects</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 leading-[1.1] tracking-tight">
+                    I build <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">Shopify Stores</span> that print money.
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed font-medium">
+                    Stop losing customers to slow sites. I help e-commerce brands scale through high-performance <span class="font-bold text-slate-900 underline decoration-shopify/30">Liquid development</span> and data-driven SEO.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="https://wa.me/923249506508" target="_blank" class="w-full sm:w-auto bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold hover:bg-slate-800 transition-all flex items-center justify-center shadow-xl shadow-slate-200 btn-shine group">
+                        Start Your Store <i data-lucide="zap" class="ml-2 w-5 h-5 text-yellow-400 fill-yellow-400 group-hover:scale-125 transition"></i>
+                    </a>
+                    <div class="flex items-center -space-x-3">
+                        <img src="https://ui-avatars.com/api/?name=User1&background=95bf47&color=fff" class="w-10 h-10 rounded-full border-2 border-white" alt="Client">
+                        <img src="https://ui-avatars.com/api/?name=User2&background=0f172a&color=fff" class="w-10 h-10 rounded-full border-2 border-white" alt="Client">
+                        <img src="https://ui-avatars.com/api/?name=User3&background=e2e8f0&color=0f172a" class="w-10 h-10 rounded-full border-2 border-white" alt="Client">
+                        <div class="pl-6 text-sm">
+                            <div class="flex text-yellow-400">
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            </div>
+                            <span class="text-slate-500 font-semibold">100+ Stores Scaled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Hero Card -->
+            <div class="hidden lg:block relative">
+                <div class="relative bg-white p-8 rounded-[40px] shadow-2xl border border-slate-100 transform rotate-3 hover:rotate-0 transition-all duration-500 group">
+                    <div class="absolute -top-6 -right-6 bg-shopify text-white p-6 rounded-3xl shadow-lg z-20 animate-bounce">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between border-b pb-4">
+                            <span class="text-slate-400 font-bold uppercase text-[10px] tracking-widest">Project Performance</span>
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold">LIVE DATA</span>
+                        </div>
+                        <div class="flex items-end justify-between">
+                            <div>
+                                <h4 class="text-3xl font-black text-slate-900">+142%</h4>
+                                <p class="text-xs text-slate-500">Revenue Increase</p>
+                            </div>
+                            <div class="flex space-x-1 items-end h-16">
+                                <div class="w-2 bg-slate-100 h-8 rounded-t-sm"></div>
+                                <div class="w-2 bg-slate-100 h-10 rounded-t-sm"></div>
+                                <div class="w-2 bg-shopify h-14 rounded-t-sm"></div>
+                                <div class="w-2 bg-slate-900 h-16 rounded-t-sm"></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-2xl flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm">
+                                <i data-lucide="shield-check" class="shopify-green"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold">Secure Liquid Code</p>
+                                <p class="text-[10px] text-slate-500">Verified by Shopify Partners</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Back decorative card -->
+                <div class="absolute inset-0 bg-shopify/10 rounded-[40px] -z-10 transform -rotate-3 translate-x-4 translate-y-4 border border-shopify/20"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- WhatsApp Floating Action -->
+    <a href="https://wa.me/923249506508" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition active:scale-95 group">
+        <div class="absolute -top-12 right-0 bg-white text-slate-900 text-[10px] font-bold px-3 py-1.5 rounded-lg shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition translate-y-2 group-hover:translate-y-0">
+            Need a Shopify Store?
+        </div>
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+    </a>
+
+    <!-- Authority Strip (Micro Trust) -->
+    <section class="py-10 border-y border-slate-100 bg-white/50 backdrop-blur-md relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <!-- Card 1 -->
+                <div class="authority-card border border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 group">
+                    <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-shopify transition-colors">
+                        <i data-lucide="zap" class="w-5 h-5 text-green-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-black text-slate-800 uppercase tracking-widest mb-0.5">Shopify OS 2.0</span>
+                        <p class="text-[10px] text-slate-500 font-medium">Future-proof Liquid builds</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="authority-card border border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 group">
+                    <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500 transition-colors">
+                        <i data-lucide="code-2" class="w-5 h-5 text-blue-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-black text-slate-800 uppercase tracking-widest mb-0.5">Liquid Specialist</span>
+                        <p class="text-[10px] text-slate-500 font-medium">Zero-app custom logic</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="authority-card border border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 group">
+                    <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-orange-500 transition-colors">
+                        <i data-lucide="mouse-pointer-2" class="w-5 h-5 text-orange-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-black text-slate-800 uppercase tracking-widest mb-0.5">CRO Obsessed</span>
+                        <p class="text-[10px] text-slate-500 font-medium">Conversion-first architecture</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="authority-card border border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 group">
+                    <div class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500 transition-colors">
+                        <i data-lucide="search" class="w-5 h-5 text-purple-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-black text-slate-800 uppercase tracking-widest mb-0.5">SEO Optimized</span>
+                        <p class="text-[10px] text-slate-500 font-medium">Rank-ready from day 1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualification Section (Who This Is For / Filter) -->
+    <section class="py-24 px-6 bg-slate-50 overflow-hidden relative">
+        <!-- Background accents -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-gradient-to-b from-white/50 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">Are we a <span class="shopify-green">Good Fit?</span></h2>
+                <p class="text-slate-500 font-medium text-lg">I value quality and results. Let’s make sure we’re aligned.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <!-- Positive Side -->
+                <div class="filter-card bg-white p-8 md:p-12 rounded-[40px] shadow-xl shadow-green-100/50 border-2 border-green-100 flex flex-col">
+                    <div class="mb-8">
+                        <div class="w-16 h-16 bg-green-500 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-green-200 mb-6">
+                            <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900">You are the <span class="text-green-600">Perfect Client</span> if:</h3>
+                    </div>
+                    
+                    <ul class="space-y-6 flex-grow">
+                        <li class="flex items-start gap-4 group">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mt-1 flex-shrink-0 group-hover:bg-green-500 transition-colors">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Growth-Minded Owner</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">You already have sales and want to scale through professional systems.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mt-1 flex-shrink-0 group-hover:bg-green-500 transition-colors">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Values Clean Code</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">You understand that "cheap code" costs more in lost sales and maintenance later.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mt-1 flex-shrink-0 group-hover:bg-green-500 transition-colors">
+                                <i data-lucide="check" class="w-4 h-4 text-green-600 group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Wants a Partner, Not a Task-Taker</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">You want someone who brings strategic ideas to the table to increase your ROI.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-12 p-6 bg-green-50 rounded-2xl border border-green-100 text-center">
+                        <p class="text-green-700 font-bold text-sm">Sounds like you? Let's build something epic.</p>
+                    </div>
+                </div>
+
+                <!-- Negative Side -->
+                <div class="filter-card bg-slate-100 p-8 md:p-12 rounded-[40px] border-2 border-slate-200 flex flex-col opacity-90 lg:opacity-75 hover:opacity-100">
+                    <div class="mb-8">
+                        <div class="w-16 h-16 bg-slate-300 text-slate-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="x-circle" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-700">We might <span class="text-slate-500">Not Fit</span> if:</h3>
+                    </div>
+                    
+                    <ul class="space-y-6 flex-grow">
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center mt-1 flex-shrink-0">
+                                <i data-lucide="x" class="w-4 h-4 text-slate-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-600">The "Cheapest" Hunt</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">If you are shopping based solely on the lowest price rather than the highest ROI.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center mt-1 flex-shrink-0">
+                                <i data-lucide="x" class="w-4 h-4 text-slate-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-600">App-Over-Performance</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">If you want to install 50 different apps instead of using clean, high-performance Liquid logic.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center mt-1 flex-shrink-0">
+                                <i data-lucide="x" class="w-4 h-4 text-slate-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-600">Unclear Business Goals</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">If you don't have a product-market fit yet and are just "trying things out" without a plan.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-12 p-6 border-2 border-dashed border-slate-300 rounded-2xl text-center">
+                        <p class="text-slate-500 font-bold text-sm italic">Respectfully, I prefer to work on projects I can scale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem → Solution Section -->
+    <section class="py-20 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
+                <!-- Problem Side -->
+                <div class="bg-slate-100 p-12 lg:p-16">
+                    <h2 class="text-2xl font-bold mb-8 text-slate-500">The Problem</h2>
+                    <ul class="space-y-8">
+                        <li class="group">
+                            <h4 class="font-bold text-slate-800 mb-1">Low Conversion Rates</h4>
+                            <p class="text-slate-500 text-sm">Visitors arrive but never buy. Your current layout is leaking revenue.</p>
+                        </li>
+                        <li class="group">
+                            <h4 class="font-bold text-slate-800 mb-1">Sluggish Page Speeds</h4>
+                            <p class="text-slate-500 text-sm">Bloated apps and messy code are killing your Google rankings and UX.</p>
+                        </li>
+                        <li class="group">
+                            <h4 class="font-bold text-slate-800 mb-1">Confusing Navigation</h4>
+                            <p class="text-slate-500 text-sm">Users get lost. Complex catalogs need intuitive, modern structures.</p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Solution Side -->
+                <div class="bg-slate-900 p-12 lg:p-16 text-white relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-shopify/20 blur-3xl rounded-full"></div>
+                    <h2 class="text-2xl font-bold mb-8 shopify-green">My Solution</h2>
+                    <ul class="space-y-8">
+                        <li class="group hover:translate-x-2 transition-transform">
+                            <h4 class="font-bold shopify-green mb-1 flex items-center">CRO-Optimized Layouts <i data-lucide="arrow-right" class="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition"></i></h4>
+                            <p class="text-slate-400 text-sm">Strategic UI placement designed to lead customers directly to the checkout.</p>
+                        </li>
+                        <li class="group hover:translate-x-2 transition-transform">
+                            <h4 class="font-bold shopify-green mb-1 flex items-center">Clean Liquid Architecture <i data-lucide="arrow-right" class="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition"></i></h4>
+                            <p class="text-slate-400 text-sm">Lightweight, app-free solutions that keep your site fast and rankable.</p>
+                        </li>
+                        <li class="group hover:translate-x-2 transition-transform">
+                            <h4 class="font-bold shopify-green mb-1 flex items-center">Speed Optimization <i data-lucide="arrow-right" class="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition"></i></h4>
+                            <p class="text-slate-400 text-sm">Achieving 90+ PageSpeed scores to maximize mobile retention.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services -->
+    <section id="services" class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-green-100/40 blur-[100px] rounded-full -mr-48 -mt-48"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-100/30 blur-[100px] rounded-full -ml-36 -mb-36"></div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-20">
+                <span class="text-xs font-bold text-shopify uppercase tracking-[0.3em] mb-4 block">What I Offer</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">Expert Shopify <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">Services</span></h2>
+                <p class="text-slate-500 max-w-2xl mx-auto font-medium">End-to-end e-commerce solutions tailored for growth, performance, and high-conversion user experiences.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Development Core -->
+                <div class="service-card p-8 rounded-[32px] bg-white border border-slate-100 flex flex-col items-start h-full">
+                    <div class="icon-box w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500">
+                        <i data-lucide="store" class="w-7 h-7 text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Complete Store Setup</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Shopify store setup with all essential integrations and professional configuration for a turnkey business launch.</p>
+                    <div class="mt-auto flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-bold uppercase">Integrations</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-bold uppercase">Launch Ready</span>
+                    </div>
+                </div>
+
+                <!-- Custom Design -->
+                <div class="service-card p-8 rounded-[32px] bg-white border border-slate-100 flex flex-col items-start h-full shadow-lg shadow-slate-200/50">
+                    <div class="icon-box w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500">
+                        <i data-lucide="palette" class="w-7 h-7 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">UI/UX Improvements</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Theme customization and UI/UX enhancements specifically engineered for better customer retention and higher conversions.</p>
+                    <div class="mt-auto flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-bold uppercase">Custom UI</span>
+                        <span class="text-[10px] bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-bold uppercase">Visual Overhaul</span>
+                    </div>
+                </div>
+
+                <!-- Technical/Coding -->
+                <div class="service-card p-8 rounded-[32px] bg-white border border-slate-100 flex flex-col items-start h-full">
+                    <div class="icon-box w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500">
+                        <i data-lucide="code-2" class="w-7 h-7 text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Custom Coding & Logic</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Bug fixing, custom Liquid coding, and template editing to solve complex functional requirements that standard apps can't handle.</p>
+                    <div class="mt-auto flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-bold uppercase">Liquid</span>
+                        <span class="text-[10px] bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-bold uppercase">Bug Fixes</span>
+                    </div>
+                </div>
+
+                <!-- Performance -->
+                <div class="service-card p-8 rounded-[32px] bg-white border border-slate-100 flex flex-col items-start h-full">
+                    <div class="icon-box w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500">
+                        <i data-lucide="zap" class="w-7 h-7 text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Speed & On-Page SEO</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Extreme speed optimization and strategic on-page SEO. I focus on technical SEO and product listing optimization for search growth.</p>
+                    <div class="mt-auto flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-orange-50 text-orange-600 px-3 py-1 rounded-full font-bold uppercase">90+ Speed</span>
+                        <span class="text-[10px] bg-orange-50 text-orange-600 px-3 py-1 rounded-full font-bold uppercase">Search Rank</span>
+                    </div>
+                </div>
+
+                <!-- Conversion Strategy -->
+                <div class="service-card p-8 rounded-[32px] bg-white border border-slate-100 flex flex-col items-start h-full shadow-lg shadow-green-100/50 scale-105 z-20">
+                    <div class="icon-box w-14 h-14 bg-green-500 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500">
+                        <i data-lucide="target" class="w-7 h-7 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Conversion Audits (CRO)</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Conversion-focused layout improvements and usability audits to identify and fix friction points in your customer's buying journey.</p>
+                    <div class="mt-auto flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-green-500 text-white px-3 py-1 rounded-full font-bold uppercase">CRO Audit</span>
+                        <span class="text-[10px] bg-green-500 text-white px-3 py-1 rounded-full font-bold uppercase">Sale Boost</span>
+                    </div>
+                </div>
+
+                <!-- Migration Specialist -->
+                <div class="service-card p-8 rounded-[32px] bg-white border border-slate-100 flex flex-col items-start h-full">
+                    <div class="icon-box w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500">
+                        <i data-lucide="arrow-right-left" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Platform Migrations</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Seamless migration from WooCommerce, Wix, Squarespace, Magento, and more. Including Figma/PSD to Shopify OS 2.0 conversion.</p>
+                    <div class="mt-auto flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-purple-50 text-purple-600 px-3 py-1 rounded-full font-bold uppercase">Figma to Shopify</span>
+                        <span class="text-[10px] bg-purple-50 text-purple-600 px-3 py-1 rounded-full font-bold uppercase">Data Port</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-white p-6 md:p-10 rounded-[40px] border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center">
+                        <i data-lucide="shield-check" class="text-slate-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">Ongoing Maintenance</h4>
+                        <p class="text-xs text-slate-500">24/7 Support and app integration services.</p>
+                    </div>
+                </div>
+                <div class="h-10 w-px bg-slate-100 hidden md:block"></div>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center">
+                        <i data-lucide="layout-template" class="text-slate-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900">Responsive Templates</h4>
+                        <p class="text-xs text-slate-500">Mobile-friendly & cross-browser perfection.</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/923249506508" target="_blank" class="bg-slate-900 text-white px-8 py-3 rounded-2xl font-bold text-sm hover:bg-slate-800 transition shadow-lg">Get Custom Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Designed Sites -->
+    <section id="projects" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-12 text-center md:text-left">
+                <h2 class="text-3xl font-bold mb-2">🚀 Recently Designed Sites</h2>
+                <div class="h-1 w-20 bg-shopify mb-4 md:mx-0 mx-auto"></div>
+                <p class="text-slate-600">Premium stores optimized for maximum performance.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-blue-100 text-blue-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Fashion</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">Pink Tartan</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Canadian luxury fashion brand. Custom UI/UX, feature implementation, and performance optimization.</p>
+                    <a href="https://pinktartan.ca/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-purple-100 text-purple-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Art & Decor</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">Jimbobart</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Creative artist store. Specialized in visually-driven layouts and high-engagement storytelling elements.</p>
+                    <a href="https://www.jimbobart.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-orange-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-orange-100 text-orange-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Lifestyle</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">Adored Vintage</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Curated boutique. SEO-focused architecture and conversion-optimized product discovery flow.</p>
+                    <a href="https://www.adoredvintage.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 4 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-green-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-green-100 text-green-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Apparel</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">Ruhposh</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Modern apparel brand. Complete store setup, theme customization, and custom branding integration.</p>
+                    <a href="https://www.ruhposh.com" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 5 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-pink-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-pink-100 text-pink-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Retail</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">Clothes Mentor</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Sustainable fashion retail. Complex multi-location setup with customized collection logic.</p>
+                    <a href="https://clothesmentor.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 6 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Tech</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">Evolved Chargers</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Tech accessories brand. Focused on Core Web Vitals, speed optimization, and technical SEO builds.</p>
+                    <a href="https://evolvedchargers.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 7 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-red-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-red-100 text-red-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Wellness</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">Inhale Health</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Inhalable nutrient brand. Modern, clean aesthetic with specialized product education sections.</p>
+                    <a href="https://inhalehealth.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 8 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-slate-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-slate-100 text-slate-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Footwear</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">The Root Collective</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Ethical shoe brand. Implemented custom storytelling components and advanced filtering systems.</p>
+                    <a href="https://therootcollective.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 9 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-teal-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-teal-100 text-teal-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Body Care</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">Kopari Beauty</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Global skincare brand. Performance-driven theme customization for high-traffic scalability.</p>
+                    <a href="https://koparibeauty.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 10 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Kitchenware</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">The Cookware Co</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Sustainable cookware. Complex product catalogs with high-conversion landing page builds.</p>
+                    <a href="https://www.cookware-co.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 11 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-rose-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-rose-100 text-rose-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Boutique</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">The Dress Rae</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">Curated dress boutique. Visual-first UI design to emphasize high-quality product imagery.</p>
+                    <a href="https://thedressrae.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+                <!-- 12 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover-lift relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-50 -mr-12 -mt-12 rounded-full transition-all group-hover:scale-150"></div>
+                    <span class="text-[10px] bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full uppercase font-bold tracking-widest mb-4 inline-block relative z-10">Outdoor</span>
+                    <h3 class="font-bold text-xl mb-3 relative z-10">VSSL Gear</h3>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed relative z-10">High-end outdoor equipment. Focused on technical spec display and robust mobile UX.</p>
+                    <a href="https://www.vsslgear.com/" target="_blank" class="text-green-600 font-extrabold text-sm hover:underline flex items-center relative z-10">Visit Live Store <i data-lucide="external-link" class="ml-2 w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW ATTRACTIVE PROCESS TIMELINE -->
+    <section id="process" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-24">
+                <div class="inline-block px-4 py-1.5 mb-6 bg-green-50 text-green-700 rounded-full text-xs font-black uppercase tracking-widest">
+                    The Success Roadmap
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
+                    A Proven <span class="shopify-green">Workflow</span> for Growth
+                </h2>
+                <p class="text-slate-500 max-w-2xl mx-auto font-medium text-lg">
+                    I don't just build sites; I engineer high-performance sales machines using a meticulously refined process.
+                </p>
+            </div>
+
+            <!-- Timeline Content -->
+            <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+                
+                <!-- Left Column (Visuals) - Sticky on Desktop -->
+                <div class="hidden lg:block sticky top-32 h-fit">
+                    <div class="relative bg-slate-900 rounded-[40px] p-12 overflow-hidden shadow-2xl">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-shopify/20 blur-[80px] rounded-full"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-3xl font-bold text-white mb-6">Execution is <span class="shopify-green underline decoration-white/20">Everything</span></h3>
+                            <p class="text-slate-400 mb-8 leading-relaxed">Each step of my process is backed by data and years of experience building for top Shopify brands.</p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4 bg-white/5 p-4 rounded-2xl border border-white/10">
+                                    <div class="w-10 h-10 bg-shopify text-white rounded-lg flex items-center justify-center">
+                                        <i data-lucide="clock" class="w-5 h-5"></i>
+                                    </div>
+                                    <span class="text-sm font-bold text-slate-200">Efficiency-Driven Timeline</span>
+                                </div>
+                                <div class="flex items-center space-x-4 bg-white/5 p-4 rounded-2xl border border-white/10">
+                                    <div class="w-10 h-10 bg-blue-500 text-white rounded-lg flex items-center justify-center">
+                                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                    </div>
+                                    <span class="text-sm font-bold text-slate-200">Quality Assured Milestones</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-12 pt-12 border-t border-white/10 flex items-center justify-between">
+                                <div class="flex -space-x-3">
+                                    <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-bold">HA</div>
+                                    <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-green-500 flex items-center justify-center text-[10px] font-bold">✓</div>
+                                </div>
+                                <span class="text-xs text-slate-500 font-bold uppercase tracking-widest">Expert Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Steps) -->
+                <div class="space-y-8 lg:space-y-12 relative">
+                    <!-- Vertical Line for Mobile/Tablet/Desktop -->
+                    <div class="absolute left-6 lg:left-0 top-4 bottom-4 w-[2px] bg-slate-100 line-grow z-0"></div>
+
+                    <!-- Step 1 -->
+                    <div class="process-step-card relative pl-16 lg:pl-20 group">
+                        <div class="absolute left-0 top-0 w-12 h-12 lg:w-14 lg:h-14 bg-white border-2 border-slate-100 rounded-2xl flex items-center justify-center shadow-md group-hover:bg-shopify group-hover:border-shopify transition-all duration-300 z-10">
+                            <i data-lucide="search" class="w-6 h-6 text-slate-400 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <div class="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:shadow-green-100/50 transition-all duration-300">
+                            <span class="text-[10px] font-black text-shopify uppercase tracking-widest mb-2 block number-glow">Step 01</span>
+                            <h4 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-green-600 transition-colors">Audit & Analysis</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">I deep-dive into your existing analytics, heatmaps, and page speeds. We identify the exact "leaks" in your sales funnel before writing a single line of code.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step-card relative pl-16 lg:pl-20 group">
+                        <div class="absolute left-0 top-0 w-12 h-12 lg:w-14 lg:h-14 bg-white border-2 border-slate-100 rounded-2xl flex items-center justify-center shadow-md group-hover:bg-shopify group-hover:border-shopify transition-all duration-300 z-10">
+                            <i data-lucide="layout" class="w-6 h-6 text-slate-400 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <div class="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:shadow-green-100/50 transition-all duration-300">
+                            <span class="text-[10px] font-black text-shopify uppercase tracking-widest mb-2 block number-glow">Step 02</span>
+                            <h4 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-green-600 transition-colors">Strategic Mapping</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Conversion mapping and wireframing. We design the user journey to be friction-less, focusing on "Add to Cart" velocity and mobile-first interactions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step-card relative pl-16 lg:pl-20 group">
+                        <div class="absolute left-0 top-0 w-12 h-12 lg:w-14 lg:h-14 bg-white border-2 border-slate-100 rounded-2xl flex items-center justify-center shadow-md group-hover:bg-shopify group-hover:border-shopify transition-all duration-300 z-10">
+                            <i data-lucide="code-2" class="w-6 h-6 text-slate-400 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <div class="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:shadow-green-100/50 transition-all duration-300">
+                            <span class="text-[10px] font-black text-shopify uppercase tracking-widest mb-2 block number-glow">Step 03</span>
+                            <h4 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-green-600 transition-colors">Custom Development</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">The heavy lifting. I build with clean Liquid code and Shopify OS 2.0 standards. This means lightning-fast speeds and zero reliance on bulky, expensive apps.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="process-step-card relative pl-16 lg:pl-20 group">
+                        <div class="absolute left-0 top-0 w-12 h-12 lg:w-14 lg:h-14 bg-white border-2 border-slate-100 rounded-2xl flex items-center justify-center shadow-md group-hover:bg-shopify group-hover:border-shopify transition-all duration-300 z-10">
+                            <i data-lucide="zap" class="w-6 h-6 text-slate-400 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <div class="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:shadow-green-100/50 transition-all duration-300">
+                            <span class="text-[10px] font-black text-shopify uppercase tracking-widest mb-2 block number-glow">Step 04</span>
+                            <h4 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-green-600 transition-colors">QA & Optimization</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Multi-browser and multi-device testing. We optimize Core Web Vitals (LCP, CLS, FID) to ensure you rank higher and convert better on day one.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="process-step-card relative pl-16 lg:pl-20 group">
+                        <div class="absolute left-0 top-0 w-12 h-12 lg:w-14 lg:h-14 bg-white border-2 border-slate-100 rounded-2xl flex items-center justify-center shadow-md group-hover:bg-shopify group-hover:border-shopify transition-all duration-300 z-10">
+                            <i data-lucide="rocket" class="w-6 h-6 text-slate-400 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <div class="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm group-hover:shadow-xl group-hover:shadow-green-100/50 transition-all duration-300">
+                            <span class="text-[10px] font-black text-shopify uppercase tracking-widest mb-2 block number-glow">Step 05</span>
+                            <h4 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-green-600 transition-colors">Scalable Launch</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed">Post-launch training and ongoing support. I don't just hand over the keys; I provide a roadmap for long-term SEO and CRO scaling.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-20 text-center">
+                <a href="https://wa.me/923249506508" target="_blank" class="inline-flex items-center space-x-4 bg-slate-900 text-white px-10 py-5 rounded-[24px] font-black shadow-2xl shadow-slate-200 hover:bg-slate-800 transition active:scale-95 btn-shine">
+                    <span>Discuss Your Project Flow</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW ATTRACTIVE METRICS SECTION -->
+    <section class="py-24 bg-slate-900 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-shopify rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-blue-600 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">Performance That <span class="shopify-green">Speaks</span></h2>
+                <p class="text-slate-400 font-medium">Real-world data from stores I've optimized and scaled.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Metric 1: Speed -->
+                <div class="metric-card p-8 rounded-[40px] group text-center flex flex-col items-center">
+                    <div class="relative w-32 h-32 mb-6">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="64" cy="64" r="45" stroke="currentColor" stroke-width="8" fill="transparent" class="text-slate-800" />
+                            <circle cx="64" cy="64" r="45" stroke="currentColor" stroke-width="8" fill="transparent" 
+                                    class="progress-ring text-shopify" 
+                                    style="--final-offset: 28.3;" /> <!-- 90% of 283 -->
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-3xl font-black text-white group-hover:scale-110 transition-transform">90+</span>
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Google PageSpeed</h3>
+                    <p class="text-slate-400 text-xs font-medium leading-relaxed">Average mobile performance score across all optimized builds.</p>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity bg-shopify/20 text-shopify text-[10px] font-black px-3 py-1 rounded-full uppercase">LCP Optimized</div>
+                </div>
+
+                <!-- Metric 2: Conversion -->
+                <div class="metric-card p-8 rounded-[40px] group text-center flex flex-col items-center">
+                    <div class="relative w-32 h-32 mb-6">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="64" cy="64" r="45" stroke="currentColor" stroke-width="8" fill="transparent" class="text-slate-800" />
+                            <circle cx="64" cy="64" r="45" stroke="currentColor" stroke-width="8" fill="transparent" 
+                                    class="progress-ring text-blue-400" 
+                                    style="--final-offset: 56.6;" /> <!-- 80% of 283 equivalent for visual -->
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-3xl font-black text-white group-hover:scale-110 transition-transform">2X</span>
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Conv. Lift</h3>
+                    <p class="text-slate-400 text-xs font-medium leading-relaxed">Average conversion rate increase after theme UI/UX overhaul.</p>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity bg-blue-500/20 text-blue-400 text-[10px] font-black px-3 py-1 rounded-full uppercase">Revenue Booster</div>
+                </div>
+
+                <!-- Metric 3: Clean Code -->
+                <div class="metric-card p-8 rounded-[40px] group text-center flex flex-col items-center">
+                    <div class="relative w-32 h-32 mb-6">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="64" cy="64" r="45" stroke="currentColor" stroke-width="8" fill="transparent" class="text-slate-800" />
+                            <circle cx="64" cy="64" r="45" stroke="currentColor" stroke-width="8" fill="transparent" 
+                                    class="progress-ring text-purple-400" 
+                                    style="--final-offset: 0;" /> <!-- 100% of 283 -->
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-3xl font-black text-white group-hover:scale-110 transition-transform">0</span>
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">App Bloat</h3>
+                    <p class="text-slate-400 text-xs font-medium leading-relaxed">I replace bulky apps with high-performance native Liquid code.</p>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity bg-purple-500/20 text-purple-400 text-[10px] font-black px-3 py-1 rounded-full uppercase">Lightweight Build</div>
+                </div>
+
+                <!-- Metric 4: SEO -->
+                <div class="metric-card p-8 rounded-[40px] group text-center flex flex-col items-center">
+                    <div class="relative w-32 h-32 mb-6">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="64" cy="64" r="45" stroke="currentColor" stroke-width="8" fill="transparent" class="text-slate-800" />
+                            <circle cx="64" cy="64" r="45" stroke="currentColor" stroke-width="8" fill="transparent" 
+                                    class="progress-ring text-orange-400" 
+                                    style="--final-offset: 28.3;" /> <!-- 90% of 283 -->
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-3xl font-black text-white group-hover:scale-110 transition-transform">100%</span>
+                        </div>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Search Ready</h3>
+                    <p class="text-slate-400 text-xs font-medium leading-relaxed">Every store is launched with technical SEO and schema foundation.</p>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity bg-orange-500/20 text-orange-400 text-[10px] font-black px-3 py-1 rounded-full uppercase">Rank Faster</div>
+                </div>
+            </div>
+
+            <!-- Interactive Sub-Stats -->
+            <div class="mt-16 bg-white/5 border border-white/10 p-6 md:p-8 rounded-[32px] grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div class="text-center group">
+                    <div class="text-2xl font-black text-white group-hover:text-shopify transition-colors">100+</div>
+                    <div class="text-[10px] text-slate-500 uppercase font-black tracking-widest mt-1">Stores Launched</div>
+                </div>
+                <div class="text-center group border-l border-white/10">
+                    <div class="text-2xl font-black text-white group-hover:text-shopify transition-colors">5.0</div>
+                    <div class="text-[10px] text-slate-500 uppercase font-black tracking-widest mt-1">Client Rating</div>
+                </div>
+                <div class="text-center group border-l border-white/10">
+                    <div class="text-2xl font-black text-white group-hover:text-shopify transition-colors">24/7</div>
+                    <div class="text-[10px] text-slate-500 uppercase font-black tracking-widest mt-1">Active Support</div>
+                </div>
+                <div class="text-center group border-l border-white/10">
+                    <div class="text-2xl font-black text-white group-hover:text-shopify transition-colors">Liquid</div>
+                    <div class="text-[10px] text-slate-500 uppercase font-black tracking-widest mt-1">Specialist</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Why Partner With Me?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+                <div class="p-8 bg-slate-50 text-slate-400">
+                    <h4 class="font-bold text-slate-600 mb-6 uppercase tracking-widest text-sm text-center">General Freelancers</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-center"><i data-lucide="minus" class="mr-2"></i> Simple Theme Flipping</li>
+                        <li class="flex items-center"><i data-lucide="minus" class="mr-2"></i> Design Only focus</li>
+                        <li class="flex items-center"><i data-lucide="minus" class="mr-2"></i> Messy, Bloated App Usage</li>
+                        <li class="flex items-center"><i data-lucide="minus" class="mr-2"></i> No Post-Launch Strategy</li>
+                    </ul>
+                </div>
+                <div class="p-8 bg-white border-l border-slate-100 ring-2 ring-shopify ring-inset relative">
+                    <div class="absolute top-4 right-4 bg-shopify text-white text-[10px] px-2 py-1 rounded font-bold uppercase">The Advantage</div>
+                    <h4 class="font-bold text-slate-900 mb-6 uppercase tracking-widest text-sm text-center">Hammad Ali</h4>
+                    <ul class="space-y-4 text-sm font-semibold">
+                        <li class="flex items-center shopify-green"><i data-lucide="check" class="mr-2"></i> Custom Liquid Logic</li>
+                        <li class="flex items-center shopify-green"><i data-lucide="check" class="mr-2"></i> CRO + SEO Foundation</li>
+                        <li class="flex items-center shopify-green"><i data-lucide="check" class="mr-2"></i> Scalable Design Systems</li>
+                        <li class="flex items-center shopify-green"><i data-lucide="check" class="mr-2"></i> Growth-Driven Partnership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Proficiency -->
+    <section class="py-12 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Expert Proficiency</p>
+            <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-400 grayscale opacity-70">
+                <span>Shopify</span>
+                <span>•</span>
+                <span>Liquid</span>
+                <span>•</span>
+                <span>HTML5</span>
+                <span>•</span>
+                <span>Tailwind CSS</span>
+                <span>•</span>
+                <span>JS (ES6)</span>
+                <span>•</span>
+                <span>SEO</span>
+                <span>•</span>
+                <span>CRO</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Common Questions</h2>
+            <div class="space-y-4">
+                <details class="faq-accordion bg-white p-6 rounded-2xl border border-slate-200 group">
+                    <summary class="list-none cursor-pointer flex justify-between items-center font-bold text-slate-700">
+                        Do you work with small brands?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-500 text-sm leading-relaxed">Yes, I work with brands at all stages. However, I prioritize owners who understand that quality development is an investment in their long-term growth.</p>
+                </details>
+                <details class="faq-accordion bg-white p-6 rounded-2xl border border-slate-200 group">
+                    <summary class="list-none cursor-pointer flex justify-between items-center font-bold text-slate-700">
+                        Do you redesign existing stores?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-500 text-sm leading-relaxed">Absolutely. Many of my clients already have a store but are frustrated with performance or design. I perform a full audit and rebuild with CRO in mind.</p>
+                </details>
+                <details class="faq-accordion bg-white p-6 rounded-2xl border border-slate-200 group">
+                    <summary class="list-none cursor-pointer flex justify-between items-center font-bold text-slate-700">
+                        Do you offer post-launch support?
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-500 text-sm leading-relaxed">I don't just "hand over the keys." I offer ongoing maintenance and optimization packages to ensure your store stays ahead of competitors.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developmental Stores Sandbox -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-bold mb-2">📌 Developmental Sandbox</h2>
+                <p class="text-slate-600">Stores built for custom code testing and feature implementation.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 text-center">
+                    <span class="text-xs font-bold text-slate-400 uppercase mb-4 block">Password: 684</span>
+                    <h3 class="font-bold text-xl mb-3">Shoploom</h3>
+                    <a href="https://ecommerce-shoploom.myshopify.com/" target="_blank" class="bg-shopify text-white w-full py-3 rounded-xl font-bold block hover:bg-green-700 transition">View Implementation</a>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 text-center">
+                    <span class="text-xs font-bold text-slate-400 uppercase mb-4 block">Password: 684</span>
+                    <h3 class="font-bold text-xl mb-3">Electro Vehicle</h3>
+                    <a href="https://electro-vehicle.myshopify.com/" target="_blank" class="bg-shopify text-white w-full py-3 rounded-xl font-bold block hover:bg-green-700 transition">View Implementation</a>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 text-center">
+                    <span class="text-xs font-bold text-slate-400 uppercase mb-4 block">Password: 1</span>
+                    <h3 class="font-bold text-xl mb-3">Electromart</h3>
+                    <a href="https://electromart-shops.myshopify.com/" target="_blank" class="bg-shopify text-white w-full py-3 rounded-xl font-bold block hover:bg-green-700 transition">View Implementation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6">Your business is my <span class="shopify-green">responsibility.</span></h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-10">Ready to transform your Shopify store? I deliver every project on time, within budget, and with a relentless focus on quality.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="https://wa.me/923249506508" target="_blank" class="bg-green-500 text-white px-10 py-4 rounded-xl font-bold hover:bg-green-600 transition flex items-center justify-center">
+                    <i data-lucide="message-circle" class="mr-2 w-5 h-5"></i>
+                    Message on WhatsApp
+                </a>
+                <a href="https://linkedin.com/in/hammad-ali-973324369" target="_blank" class="bg-white/10 backdrop-blur-sm border border-white/20 px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition">Contact on LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-12 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-8">
+            <div>
+                <span class="text-xl font-bold tracking-tight">Hammad<span class="shopify-green">Ali</span></span>
+                <p class="text-slate-400 text-xs mt-2 uppercase tracking-widest">Shopify Developer • SEO • CRO</p>
+            </div>
+            <p class="text-slate-500 text-sm">© 2024 Hammad Ali. All projects delivered with excellence.</p>
+            <div class="flex space-x-4">
+                <a href="https://wa.me/923249506508" class="text-slate-400 hover:text-green-600 transition"><i data-lucide="message-circle"></i></a>
+                <a href="https://linkedin.com/in/hammad-ali-973324369" class="text-slate-400 hover:text-green-600 transition"><i data-lucide="linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Logic
+        window.onscroll = function() {
+            const nav = document.getElementById('main-nav');
+            if (window.pageYOffset > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        };
+
+        // Mobile Menu Logic
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+           const sidebar = document.createElement('div');
+           sidebar.className = "fixed inset-0 z-[100] bg-slate-900/90 backdrop-blur-md flex flex-col items-center justify-center space-y-8 text-white text-2xl font-bold p-10";
+           sidebar.innerHTML = `
+                <button id="close-menu" class="absolute top-6 right-6 p-2"><i data-lucide="x"></i></button>
+                <a href="#projects" class="hover:text-shopify">Projects</a>
+                <a href="#services" class="hover:text-shopify">Expertise</a>
+                <a href="#process" class="hover:text-shopify">Process</a>
+                <a href="https://wa.me/923249506508" class="bg-green-500 px-8 py-3 rounded-2xl flex items-center"><i data-lucide="message-circle" class="mr-2"></i> WhatsApp</a>
+           `;
+           document.body.appendChild(sidebar);
+           lucide.createIcons();
+           
+           // Lock scroll
+           document.body.style.overflow = 'hidden';
+
+           const closeMenu = () => {
+               sidebar.remove();
+               document.body.style.overflow = '';
+           };
+
+           document.getElementById('close-menu').onclick = closeMenu;
+           sidebar.querySelectorAll('a').forEach(link => link.onclick = closeMenu);
+        });
+    </script>
+</body>
+</html>
